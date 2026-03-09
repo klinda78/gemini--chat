@@ -1,3 +1,44 @@
+```mermaid
+flowchart TD
+    subgraph Agents
+        A1[Agent A Output]
+        A2[Agent B Output]
+        A3[Agent C Output]
+    end
+
+    subgraph ArtifactLayer
+        AR[Artifacts / PITs]
+    end
+
+    subgraph ManifestLayer
+        M[Manifest: normative state]
+    end
+
+    subgraph AuditLoop
+        R[Runtime-audit / Evaluate drift]
+        S[Stability Predicate / Threshold Function]
+    end
+
+    subgraph Control
+        L[Lock / Solidify Module]
+    end
+
+    %% 流程
+    A1 --> AR
+    A2 --> AR
+    A3 --> AR
+    AR --> M
+    M --> R
+    AR --> R
+    R --> S
+    S -->|stable=True| L
+    S -->|stable=False| M
+
+    %% 循环表示
+    L --> M
+```
+
+
 ## 从数学和系统动力学的角度把 Manifest 的作用形式化
 
 **1 Manifest 的数学定位**

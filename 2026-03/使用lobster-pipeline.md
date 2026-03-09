@@ -1,6 +1,7 @@
 ## Quick Reference lobster pipeline
 ### 什么是pipeline
 - 在 OpenClaw 和 Lobster 中，Pipeline 通常用来定义 复杂的工作流，使得多个工具和任务按预定顺序执行。
+- 它的多个步骤可以是不同的工具调用、任务执行、数据处理或其他操作。
 ### 关键概念：
 
 **1. Pipeline 运行模式**：$LOBSTER 提供了两种运行模式：
@@ -17,3 +18,25 @@
 - 自动化任务：像数据抓取、处理和报告生成这样的多步骤任务可以通过 pipeline 自动化。
 
 - 工作流编排：将多个工具的调用和逻辑串联起来，确保每个步骤都按顺序执行，并可以实现复杂的业务逻辑
+
+
+### 一个例子
+```YAML
+
+name: data-processing-pipeline
+
+steps:
+  - id: fetch-data
+    command: curl -s https://example.com/api/data
+
+  - id: process-data
+    command: python process_data.py
+    stdin: $fetch-data.stdout
+
+  - id: store-data
+    command: python store_data.py
+    stdin: $process-data.stdout
+
+  - id: notify
+    command: send-notification --message "Data processed"
+```

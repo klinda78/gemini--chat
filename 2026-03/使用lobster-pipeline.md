@@ -42,6 +42,7 @@ steps:
 ```
 
 ### pipeline 如何生成&& 加载位置
+- 位置 通常位于workspace/.opeanclaw/workflow/
 
 **1.如何调用skills**
 如果你在 .openclaw/wrokspace/

@@ -1,4 +1,4 @@
-## 流程图表示多 Agent → Manifest → runtime-audit → stability 收敛的数学/工程关系
+## 一 流程图表示多 Agent → Manifest → runtime-audit → stability 收敛的数学/工程关系
 ```mermaid
 flowchart TD
     subgraph Agents
@@ -40,7 +40,7 @@ flowchart TD
 ```
 
 
-## 从数学和系统动力学的角度把 Manifest 的作用形式化
+## 二 从数学和系统动力学的角度把 Manifest 的作用形式化
 
 **1 Manifest 的数学定位**
 

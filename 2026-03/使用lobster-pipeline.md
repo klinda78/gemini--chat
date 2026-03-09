@@ -40,3 +40,43 @@ steps:
   - id: notify
     command: send-notification --message "Data processed"
 ```
+
+### pipeline 如何生成&& 加载位置
+
+**1.如何调用skills**
+如果你在 .openclaw/wrokspace/
+有目录如下
+```tree
+skills/
+└── skill-nam/
+        ├── SKILL.MD
+        └── scripts/
+              └── git_top_rank.py
+```
+- 当前情况：
+你在 skills/SKILL.MD 里写了这个py script 的使用说明。
+```cmd
+   python scripts/git_top_rank.py --output filename 
+```
+来执行
+- skill 的本质是把某个脚本或工具包装成 agent 可调用的 命令
+- 你希望在 workflow 中“引用这个 skill”来执行脚本，而不是直接写命令行
+  那么工作流 YAML 文档 github-top-rank.lobster 如下
+```YAML
+name: github-top-rank
+
+steps:
+  - id: fetch-top
+    command: openclaw skills run skill-name --output outpt/github_top_$(date +%Y-%m-%d).json
+    description: "Fetch top 10 GitHub repos using git-top-rank skill"
+
+  - id: append-time
+    command: echo "$(date +'%Y-%m-%d %H:%M:%S')" >> outpt/github_top_$(date +%Y-%m-%d).json
+
+  - id: send-channel
+    command: openclaw channel send --channel <your_channel_id> --message "$(cat outpt/github_top_$(date +%Y-%m-%d).json)"
+
+```
+
+
+

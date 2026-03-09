@@ -1,0 +1,41 @@
+'''mermaid
+flowchart TD   
+    %% 控制流层 control flow
+    subgraph Control_Flow["控制流"]
+        CRON[Cron Trigger]
+        AGENT[Agent]
+        WORKFLOW[Workflow (Lobster)]
+        TOOLS[Tools / CLI / Skills / llm-task]
+    end
+
+    CRON --> AGENT --> WORKFLOW --> TOOLS
+
+'''mermaid
+
+
+
+'''mermaid
+flowchart TD  
+    
+    %% 数据流层 data flow
+    subgraph Data_Flow["数据流"]
+        SKILL_CLI[Skill CLI\n(e.g., openclaw skills run github-top-rank)]
+        LLM[llm-task\n(JSON output)]
+        JQ[jq -r '.markdown'\n(extract text/Markdown)]
+        MESSAGE[openclaw message send\n(to Feishu)]
+    end
+
+    SKILL_CLI --> LLM --> JQ --> MESSAGE
+
+'''mermaid
+
+'''mermaid
+flowchart TD  
+ Slash Command 
+%% 斜杠命令  Slash Command 
+    subgraph Slash_Command["Slash Command /skill ..."]
+        SC[仅可在聊天界面触发\n不可写入 workflow command]
+    end
+
+'''mermaid
+

@@ -8,7 +8,7 @@ openclaw lobster '<pipeline>'
 ``` bash
 lobster '<pipeline>'
 ``` 
-## 文档中的erfrence 具体含义如下：
+## 文档各个命令的具体含义如下：
 
 **1. Run pipeline (human mode - pretty output)**
 ``` bash

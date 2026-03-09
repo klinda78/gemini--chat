@@ -1,3 +1,4 @@
+## 流程图表示多 Agent → Manifest → runtime-audit → stability 收敛的数学/工程关系
 ```mermaid
 flowchart TD
     subgraph Agents

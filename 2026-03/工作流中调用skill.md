@@ -72,6 +72,7 @@ llm-task 输入 JSON（可以是前一步 Skill CLI 输出）
 下一步可以直接用 jq 或者 message CLI 发消息
 
 ## 2. 数据流示意
+```flowchart
 Skill CLI (python/github-top-rank)
       ↓ JSON
 llm-task (处理 JSON，生成 summary/markdown)
@@ -79,7 +80,7 @@ llm-task (处理 JSON，生成 summary/markdown)
 jq -r '.markdown' (提取文本)
       ↓ Markdown
 openclaw message send --target feishu
-
+```
 这里你不需要 Slash Command
 
 Skill CLI + llm-task 完全可以在 workflow 内完成自动化

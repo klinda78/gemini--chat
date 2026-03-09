@@ -78,5 +78,7 @@ steps:
 
 ```
 
-
+**2. workflow 调用 skill**
+- skill 和 workflow 是解耦的，你可以随时替换脚本实现，而 workflow 不变
+- workflow 不直接调用 python 脚本，而是调用 skill 的 CLI 命令
 

@@ -35,7 +35,7 @@ stable(module) = f(runtime_metrics, artifact_history, policy)
   Parser_Core not stable:
     - success_runs = 8 < 10
   ```
-## predict-satau 是一个系统级的rumtime-workflow
+## predict-status 是一个系统级的rumtime-workflow
 - the runtime audit
 ```
 metric collection

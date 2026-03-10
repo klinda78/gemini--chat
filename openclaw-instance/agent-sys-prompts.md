@@ -145,13 +145,13 @@ openclaw agent start \--name RiskEngine \\
 
 ## 六、原则总结
 
-* 每个 Agent 只操作自己 scope + artifact registry
+*   每个 Agent 只操作自己 scope + artifact registry
     
-* 所有 artifact 都版本化
+*   所有 artifact 都版本化
     
-* Manifest 是全局状态和 DAG 控制中心
+*   Manifest 是全局状态和 DAG 控制中心
     
-* Shadow Handoff + Warm Start 保证多 Agent 接力
+*   Shadow Handoff + Warm Start 保证多 Agent 接力
     
-* 冲突由 Policy Engine 或 Architect 解决
+*   冲突由 Policy Engine 或 Architect 解决
 

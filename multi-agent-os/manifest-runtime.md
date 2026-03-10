@@ -113,7 +113,8 @@ def stable(module):
 *   输出的 stable/unstable 判定才不会随机波动。
     
 ***
-### (3 ) 从 agent tage 到predict-status 判断的转换图，把原始随机性、runtime-audit 和 predicate 之间的关系完全可视化
+### (3 ) 从 agent tage 到predict-status 判断的转换图  
+把原始随机性、runtime-audit 和 predicate 之间的关系完全可视化
 ```mermaid
 flowchart TD
 
@@ -135,7 +136,7 @@ end
 
 %% -------- Layer 3 --------
 subgraph L3["Layer 3 — Stability Predicate"]
-C1[stability function f]
+C1[stability function f #40;#41;]
 C2{stable ?}
 end
 

@@ -81,4 +81,46 @@ evaluate(predicate)
 solidified_nodes:
   - Parser_Core
 ```
+## 需要策略
+=====
+**稳定性函数如何设计为可编程 predicate**
+前面列出的分布（pit数量、artifact修改次数、agent贡献量、模块稳定周期）是 **原始事件/行为层面的统计**。
+它们反映的是 **agent 在系统中产生的“噪声”**。
+为了解决这个问题，通常做两件事：
 
+### （1）引入 runtime-audit / derived state
+
+不要直接用 agent 统计，而是用 **artifact + execution metrics** 作为输入：
+```
+stable(module) = f(artifact\_consistency, error\_rate, test\_results)
+```
+*   这些指标本身经过多轮验证，分布相对平滑。
+    
+*   可减少 heavy-tail 和 Zipf 对阈值的直接影响。
+    
+*   使 threshold 函数输出更稳定。
+### （2）即便仍然使用 agent 标签，也要加 **平滑或累积机制**：
+===
+``` 
+def stable(module):  
+ recent\_window \= last\_n\_runs(module, n\=10)  
+ pit\_count\_avg \= mean(\[run.pit\_count for run in recent\_window\])  
+ artifact\_changes\_avg \= mean(\[run.artifact\_changes for run in recent\_window\])  
+ return pit\_count\_avg < max\_pit\_threshold and artifact\_changes\_avg < max\_artifact\_threshold
+```
+*   使用滑动窗口或移动平均，避免单次极端值引起的波动。
+    
+*   将原本强随机性的 agent-classified tag 转化为 **平滑化的决策指标**。
+    
+*   输出的 stable/unstable 判定才不会随机波动。
+    
+***
+
+### (3) 结论
+====
+
+*   **单纯使用 agent-edit 分类标签统计**来判定模块稳定性 → 会得到高度随机的阈值，不可靠。
+    
+*   **引入 runtime-audit + 平滑 / 聚合逻辑** → 可以得到稳定、可预测的稳定性判断。
+    
+*   本质是 **从原始 agent 事件（heavy-tailed） → 经过计算/累积 → 得到稳定性判定（近似可控随机性）**。

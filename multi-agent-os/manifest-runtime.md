@@ -36,13 +36,13 @@ stable(module) = f(runtime_metrics, artifact_history, policy)
     - success_runs = 8 < 10
   ```
 ## predict-satau 是一个系统级的rumtime-workflow
-**the runtime audit**  
+- the runtime audit
 ```
 metric collection
 evaluation
 policy decision
 ```
-an example:  audit process  
+- an example:  audit process  
 ```flowchart
 artifact metrics
 execution metrics
@@ -57,7 +57,7 @@ policy engine
         ▼
 lock / unlock
 ```
-an example of mnifest entity:
+- an example of mnifest entity:
 ```YAML
 stability_policies:
 
@@ -82,7 +82,6 @@ solidified_nodes:
   - Parser_Core
 ```
 ## 需要策略
-=====
 **稳定性函数如何设计为可编程 predicate**
 前面列出的分布（pit数量、artifact修改次数、agent贡献量、模块稳定周期）是 **原始事件/行为层面的统计**。
 它们反映的是 **agent 在系统中产生的“噪声”**。
@@ -100,7 +99,6 @@ stable(module) = f(artifact\_consistency, error\_rate, test\_results)
     
 *   使 threshold 函数输出更稳定。
 ### （2）即便仍然使用 agent 标签，也要加 **平滑或累积机制**：
-===
 ``` 
 def stable(module):  
  recent\_window \= last\_n\_runs(module, n\=10)  
@@ -117,7 +115,6 @@ def stable(module):
 ***
 
 ### (3) 结论
-====
 
 *   **单纯使用 agent-edit 分类标签统计**来判定模块稳定性 → 会得到高度随机的阈值，不可靠。
     

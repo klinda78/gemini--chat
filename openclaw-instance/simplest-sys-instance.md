@@ -94,6 +94,19 @@ You are RiskEngine Agent in Project Nexus.
 []
 ```
 
+**meeting_minutes.md**
+
+*   **\[议题\]**: 为什么吵架？（如：Python 处理大数与 Node 处理大数的溢出矛盾）
+    
+*   **\[立场 A\]**: DataMiner 的建议。
+    
+*   **\[立场 B\]**: LogicFixer 的反对理由。
+    
+*   **\[裁决方案\]**: 最终选定的路径及其逻辑。
+    
+*   **\[Manifest 更新点\]**: 哪些新规则被写入了“物理约束”。
+
+
 ## 四、启动脚本示例（bash）
 ```
 \# 启动 DataMiner
@@ -138,6 +151,15 @@ openclaw agent start \--name RiskEngine \\
     
 
 ***
+## 五、总工程师（碳基人类）的watching-board  
+
+在nexus manifest agents operate systent 里碳基人类只需关注三个文件，即可掌握全局：
+
+1.  **`manifest.json`**: 当前谁在干活，还有几个坑没填。
+    
+2.  **`decision_log.json`**: 为什么要放弃之前的方案。
+    
+3.  **`meeting_minutes.md`**: Agent 们吵架的最终结论是什么。
 
 ## 六、原则总结
 

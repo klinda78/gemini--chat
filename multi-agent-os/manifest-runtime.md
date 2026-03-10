@@ -113,6 +113,56 @@ def stable(module):
 *   输出的 stable/unstable 判定才不会随机波动。
     
 ***
+### (3 ) 从 agent tage 到predict-status 判断的转换图，把原始随机性、runtime-audit 和 predicate 之间的关系完全可视化
+```mermaid
+flowchart TD
+
+%% -------- Layer 1 --------
+subgraph L1["Layer 1 — Raw Agent Signals (High Entropy)"]
+A1[agent tag: PIT]
+A2[agent tag: artifact edit]
+A3[agent tag: module commit]
+A4[agent tag: error log]
+end
+
+%% -------- Layer 2 --------
+subgraph L2["Layer 2 — Runtime Audit (Entropy Reduction)"]
+B1[collect events]
+B2[normalize metrics]
+B3[window aggregation]
+B4[drift evaluation]
+end
+
+%% -------- Layer 3 --------
+subgraph L3["Layer 3 — Stability Predicate"]
+C1[stability function f]
+C2{stable ?}
+end
+
+%% -------- Layer 4 --------
+subgraph L4["Control Outcome"]
+D1[solidify module]
+D2[continue iteration]
+end
+
+%% connections
+A1 --> B1
+A2 --> B1
+A3 --> B1
+A4 --> B1
+
+B1 --> B2
+B2 --> B3
+B3 --> B4
+
+B4 --> C1
+C1 --> C2
+
+C2 -->|true| D1
+C2 -->|false| D2
+D2 --> B1
+```
+
 
 ### (3) 结论
 

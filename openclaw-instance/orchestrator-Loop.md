@@ -42,7 +42,28 @@ D:\ProjectNexus_Workspace\
 
 7. 总工发现 `last_active_agent` 的状态变更为none，last_task 状态为 finish,通知碳基人类任务完成。
     
-***
+## 总工管理下的有向无闭图  
+- 任务结构通常是 DAG
+
+```mermaid
+flowchart TD
+    T1[Collect Data]
+
+    T2[Market Analysis]
+    T3[Risk Analysis]
+
+    T4[Signal Generation]
+
+    T5[Trade Execution]
+
+    T1 --> T2
+    T1 --> T3
+
+    T2 --> T4
+    T3 --> T4
+
+    T4 --> T5
+```
 
 ## 🛠️ 总工指令：如何部署这个白皮书？
 -------------------

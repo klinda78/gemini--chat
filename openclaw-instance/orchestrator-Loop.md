@@ -5,9 +5,12 @@
 1. **分发阶段:** 总工读取 requirements.txt，调用逻辑能力最强的顶级llm-agent 生成任务清单。
    
 2. **定义环境:** 配置 MCP 环境，挂载必要的本地/云端路径。
+
 3. 创建物理空间，这个空间将映射到mcp server:/scope:agentname
 
-4.```tree
+  物理空间示例：
+
+```tree
 D:\ProjectNexus_Workspace\
 ├── nexus_manifest.json          # 全局唯一真相源 (SSOT)
 ├── requirements.txt             # 任务源头：总工定义的原始需求
@@ -27,15 +30,15 @@ D:\ProjectNexus_Workspace\
 └── 📜 logs/                     # 审计足迹
     └── meeting_minutes/         # 历次冲突解决会议的 Markdown 记录
 ```    
-5. **播种 (Seeding)：** 手动初始化第一个 `manifest.json`,menifest是全局唯一真相源 (SSOT)。
+4. **播种 (Seeding)：** 手动初始化第一个 `manifest.json`,menifest是全局唯一真相源 (SSOT)。
 
 5. **驱动 (Activating)：** - 并行或者依次 启动 Agent A。
     
   *   AgentA  读取 Manifest ➜ 思考 (Plan) ➜ 执行 (Act) ➜ 更新 Manifest ➜ 退出. 若任务中断，下一个 Agent 通过 MCP 直接继承“物理现场”。
         
-6. **agentB 被 invoke或者active，重复步骤5 ，进行接力** -
+6. **AgentB invoke或者active** 重复步骤5 ，进行接力
 
-7 总工发现 `last_active_agent` 的状态变更为none，last_task 状态为 finish,通知碳基人类任务完成。
+7. 总工发现 `last_active_agent` 的状态变更为none，last_task 状态为 finish,通知碳基人类任务完成。
     
 ***
 

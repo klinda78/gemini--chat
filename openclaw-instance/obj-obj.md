@@ -45,7 +45,7 @@ flowchart TD
     subgraph CHIEF[总工（Chief Orchestrator）]
         MON[监控 MCP / Manifest]
         LOCK[Artifact Solid & Lock]
-        VIS[可视化 & 决策支持]
+        VIS[规划调度 & 决策支持]
     end
 
     %% Agent 输出到 Artifact

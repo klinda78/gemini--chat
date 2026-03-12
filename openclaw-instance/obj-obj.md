@@ -21,14 +21,14 @@
 ```mermaid
 flowchart TD
     %% 永动 Agent
-    subgraph AGENTS[永动 Agents]
+    subgraph AGENTS[永动 Agents（scope）]
         A1[Agent A]
         A2[Agent B]
         A3[Agent C]
     end
 
     %% Artifact 层
-    subgraph ARTIFACTS[Artifacts（scope） / PITs]
+    subgraph ARTIFACTS[Artifacts / PITs]
         AR1[Artifact A]
         AR2[Artifact B]
         AR3[Artifact C]

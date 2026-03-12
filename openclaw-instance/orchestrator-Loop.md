@@ -34,7 +34,9 @@ D:\ProjectNexus_Workspace\
 
 5. **驱动 (Activating)：** - 并行或者依次 启动 Agent A。
     
-  *   AgentA  读取 Manifest ➜ 思考 (Plan) ➜ 执行 (Act) ➜ 更新 Manifest ➜ 退出. 若任务中断，下一个 Agent 通过 MCP 直接继承“物理现场”。
+  *   Agent
+      - 情况A: 读取 Manifest ➜ 思考 (Plan) ➜ 执行 (Act) ➜ 更新 Manifest ➜ 退出.
+      - 情况B: 若任务中断，下一个 Agent 被启用后将通过 MCP 直接继承“物理现场”。
         
 6. **AgentB invoke或者active** 重复步骤5 ，进行接力
 

@@ -47,7 +47,7 @@ D:\ProjectNexus_Workspace\
 ## 🛠️ 总工指令：如何部署这个白皮书？
 -------------------
 
-为了让你的 Gemini CLI 或 Python 脚本支持这套系统，你需要为所有的 Agent 配置以下 **System Instruction** 的开头：
+为了让你的 OPENCLAW  或任何AI agent 支持这套系统，需要为所有的 Agent 配置以下 **System Instruction** 的开头：
 
 > “你已接入 **Project Nexus MCP 系统**。你的行为准则已在 `mcp://project/manifest.json` 中定义。
 > 

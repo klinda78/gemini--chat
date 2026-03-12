@@ -2,21 +2,41 @@
 -----------------------------------
 **所有并行或接替的 Agent 必须接入统一的 Nexus MCP 服务器。这不再是简单的文件传递，而是建立了一个持续的“项目工作场”**  
 
-1. **分发阶段:** 总工读取 requirements.txt，调用 Architect 生成任务清单。
+1. **分发阶段:** 总工读取 requirements.txt，调用逻辑能力最强的顶级llm-agent 生成任务清单。
    
 2. **定义环境:** 配置 MCP 环境，挂载必要的本地/云端路径。
-    
-3. **播种 (Seeding)：** 手动初始化第一个 `manifest.json`,menifest是全局唯一真相源 (SSOT)。
-    
-4. **驱动 (Activating)：** - 启动 Agent A。
-    
-  *   Agent A 读取 Manifest ➜ 思考 (Plan) ➜ 执行 (Act) ➜ 更新 Manifest ➜ 退出。
-        
-5. **自动接力 (Auto-Handoff)：** - 调度脚本检测到 `last_active_agent` 变更，自动唤醒 `next_designated_agent`。
-    
-  *   下一个 Agent 通过 MCP 直接继承“物理现场”。
-        
+3. 创建物理空间，这个空间将映射到mcp server:/scope:agentname
 
+4.```tree
+D:\ProjectNexus_Workspace\
+├── nexus_manifest.json          # 全局唯一真相源 (SSOT)
+├── requirements.txt             # 任务源头：总工定义的原始需求
+│
+├── 🛡️ scopes/                   # 物理隔离区 (Sandbox)
+│   ├── DataMiner/               # Agent A 的私人领地
+│   │   ├── temp/                # 临时计算空间
+│   │   └── shadow_trace.log     # 该 Agent 的原始思考链（低权限）
+│   ├── LogicFixer/              # Agent B 的私人领地
+│   └── Auditor/                 # 审计者的空间
+│
+├── 📦 artifacts/                # 固化产物区 (The Truth)
+│   ├── code/                    # 只有通过审计的代码才能进入这里
+│   ├── data/                    # 经过清洗后的确定性数据
+│   └── docs/                    # 会议纪要与决策日志 (Decision_Logs)
+│
+└── 📜 logs/                     # 审计足迹
+    └── meeting_minutes/         # 历次冲突解决会议的 Markdown 记录
+```    
+5. **播种 (Seeding)：** 手动初始化第一个 `manifest.json`,menifest是全局唯一真相源 (SSOT)。
+
+5. **驱动 (Activating)：** - 并行或者依次 启动 Agent A。
+    
+  *   AgentA  读取 Manifest ➜ 思考 (Plan) ➜ 执行 (Act) ➜ 更新 Manifest ➜ 退出. 若任务中断，下一个 Agent 通过 MCP 直接继承“物理现场”。
+        
+6. **agentB 被 invoke或者active，重复步骤5 ，进行接力** -
+
+7 总工发现 `last_active_agent` 的状态变更为none，last_task 状态为 finish,通知碳基人类任务完成。
+    
 ***
 
 ## 🛠️ 总工指令：如何部署这个白皮书？

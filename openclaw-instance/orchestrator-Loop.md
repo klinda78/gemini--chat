@@ -42,8 +42,8 @@ D:\ProjectNexus_Workspace\
 
 7. 总工发现 `last_active_agent` 的状态变更为none，last_task 状态为 finish,通知碳基人类任务完成。
     
-## 总工管理下的有向无闭图  
-- 任务结构通常是 DAG
+## 并行任务模型  
+- 总工允许并行执行，任务结构通常是 DAG（有向无环图DAG）：
 
 ```mermaid
 flowchart TD

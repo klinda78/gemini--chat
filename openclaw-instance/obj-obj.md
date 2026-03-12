@@ -28,7 +28,7 @@ flowchart TD
     end
 
     %% Artifact 层
-    subgraph ARTIFACTS[Artifacts / PITs]
+    subgraph ARTIFACTS[Artifacts（scope） / PITs]
         AR1[Artifact A]
         AR2[Artifact B]
         AR3[Artifact C]

@@ -6,7 +6,7 @@
    
 2. **定义环境:** 配置 MCP 环境，挂载必要的本地/云端路径。
     
-3. **播种 (Seeding)：** 手动初始化第一个 `manifest.json`。
+3. **播种 (Seeding)：** 手动初始化第一个 `manifest.json`,menifest是全局唯一真相源 (SSOT)。
     
 4. **驱动 (Activating)：** - 启动 Agent A。
     

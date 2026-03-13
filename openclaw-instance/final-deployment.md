@@ -7,8 +7,8 @@
 注意，是routine的类型，就应当考虑用Corn或者是lobster解决，方便我以后复用，
 总之简单任务你只需要完成对单个agent注入和调用。
 2 你认为在15分钟之内无法完成的复制任务，则应该构建一个agent团队来协作完成。
-每个agent有独立的session和独立的jobid-agentid-workspace/
-describe-task.md放到其中
+每个agent有独立的session和独立的agentid-workspace/
+task.md放到其中
 3 你配置的协作类agent要满足下面的要求:
 每个agent有独立的session和独立的workspace。
 每个agent在开始工作时要

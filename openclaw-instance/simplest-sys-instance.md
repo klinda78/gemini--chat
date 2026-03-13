@@ -66,6 +66,54 @@ You are RiskEngine Agent in Project Nexus.
 ```
 
 ## 三、Artifact & Manifest 初始模板
+**artifact** 任务执行的结构化证据
+- artifact 有4种状态:draft → solid → locked->archived
+- 只有 solid artifact 才能被下游任务使用
+- **menory artifact**
+放到 artifact graph里可以做到audit 和callback sys 
+```json
+{
+  "artifact_type": "memory",
+  "agent_id": "market-analysis",
+  "tags": ["trading","crypt"]
+  "topic": "BTC trend",
+  "value": "bullish",
+  "confidence": 0.72,
+  "timestamp": 171000000
+}
+
+```
+- **knowledge artifact**
+```json
+{
+  "artifact_id": "uuid",
+  "agent_id": "string",
+  "artifact_type": "knowledge",
+  "tags": ["pdf","skill"],
+  "status": "solid",
+  "value: {
+  "inputs": [],
+  "outputs": []
+   }
+}
+```
+- **结构**一个最小的artifact应当如下：
+```json
+{
+  "artifact_id": "uuid",
+  "agent_id": "string",
+  "artifact_type": "memory|state|knowledge",
+  "tags": "string",
+  "status": "draft|solid|locked",
+  "value: {
+  "inputs": [],
+  "outputs": []
+   },
+  "payload": {},
+  "created_at": "timestamp"
+}
+```
+
 **nexus_manifest.json**
 ```json
 
@@ -82,9 +130,9 @@ You are RiskEngine Agent in Project Nexus.
     "open_loops": []
   },
   "task_graph": {
-    "DataMiner": [],
-    "LogicFixer": ["DataMiner"],
-    "RiskEngine": ["LogicFixer"]
+    "DataMiner": ["completed", "DataMiner"],
+    "LogicFixer": ["running", "DataMiner"],
+    "RiskEngine": ["pedding", "LogicFixer"]
   }
 }
 

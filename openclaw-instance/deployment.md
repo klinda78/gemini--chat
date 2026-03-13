@@ -151,5 +151,5 @@ Agent 退出後继承现场
 它是一种 **上层执行规范 / 协同层**。
 
 ✔ 在 OpenClaw 中**orchestrator 在后台自动统筹推进项目往目标前进**，  
-但你可以通过规范 + Manifest Server + 按状态触发 agent loop，  
+通过syetem-consturctur规范 + Manifest Server + 按状态触发 agents loop，  
 实现你想要的接力推进逻辑。

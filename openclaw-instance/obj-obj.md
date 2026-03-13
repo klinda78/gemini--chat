@@ -4,7 +4,7 @@
 
 - Agents 永动执行任务：Agent A/B/C 持续运行，按自己的 workflow/skill 推进任务。
 
-- Artifact 输出：Agent 的每次执行结果、PIT、分析产物都写入 Artifact 层。
+- Artifact 输出：Agent 的每次执行结果、PIT、分析产物都写入 Artifact 层。Artifact schema 决定 Manifest 能否正确投影系统状态,  Artifact schema 是系统核心
 
 - Manifest / MCP：将 Artifact 输出映射到 规范性系统状态模型，通过 runtime‑audit 和 stability predicate 评估是否稳定收敛。
 

@@ -20,6 +20,23 @@ D:\OpenClaw\Workspace\project
 |   └── meeting_minutes/         # 历次冲突解决会议的 Markdown 记录
 └── 
 ```
+```json
+{
+  "artifact_type": "memory",
+  "agent_id": "market-analysis",
+  "tags": ["trading","crypt"]
+  "topic": "BTC trend",
+  "value": "bullish",
+  "confidence": 0.72,
+  "timestamp": 171000000
+}
+```
+
+```json
+
+
+```
+
 
 
 **meeting\_minutes.md**

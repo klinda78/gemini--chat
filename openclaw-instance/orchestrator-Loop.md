@@ -35,14 +35,16 @@ D:\ProjectNexus_Workspace\
 5. **驱动 (Activating)：** - 并行或者依次 启动 Agent A。
     
   *   Agent
-      - 情况A: 读取 Manifest ➜ 思考 (Plan) ➜ 执行 (Act) ➜ 更新 Manifest ➜ 退出.
+      - 情况A: 读取 Manifest-scope加载任务 ➜ 思考 (Plan) ➜ 执行 (Act) ➜ 更新 Manifest-artifacts ➜ 退出.
       - 情况B: 若任务中断，下一个 Agent 被启用后将通过 MCP 直接继承“物理现场”。
         
 6. **AgentB invoke或者active** 重复步骤5 ，进行接力
 
-7. 总工发现 `last_active_agent` 的状态变更为none，last_task 状态为 finish,通知碳基人类任务完成。
+7. **总工** 发现
+   - 调用audit-agent ，更新 Manifest-state
+   - 如果next_agent` 状态变更为none，last_task 状态为 finish,通知碳基人类任务完成。
     
-## 并行任务模型  
+## Orchestrator 调度下的并行任务模型  
 - 总工允许并行执行，任务结构通常是 DAG（有向无环图DAG）：
 
 ```mermaid

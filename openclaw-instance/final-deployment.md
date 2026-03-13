@@ -1,10 +1,10 @@
 
 ``` tree
-D:\OpenClaw\Workspace
+D:\OpenClaw\Workspace\project
 ├── nexus_manifest.json          # 全局唯一真相源 (SSOT)
 ├── requirements.txt             # 任务源头：总工定义的原始需求
 │
-├── 🛡️ project/                   # 物理隔离区 (Sandbox)
+├── 🛡️ scope/                   # 物理隔离区 (Sandbox)
 │   ├── agent1-workspace/               # Agent A 工作领地
 │   │   ├── temp/               # 临时空间
 |   |   ├── artifact.md          # 项目知识库产物 

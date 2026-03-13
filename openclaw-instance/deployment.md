@@ -121,35 +121,27 @@ openclaw agent run next-agent "execute\_nexus\_plan"
 
 🧠 核心区别（正本清源）
 -------------
+```
+你的 Nexus Orchestrator Loop | OpenClaw 官方 Loop
+---------------------------------------------------------
+持续运行 state machine       | 单次 loop per invocation
 
-你的 Nexus Orchestrator Loop
+共享DAG 计划 + state-schema  | 自发 DAG 调度
 
-OpenClaw 官方 Loop
+Agent 读取 manifest → act    | OpenClaw loop 执行技能与 workflow
 
-持续运行 state machine
+Agent 退出後继承现场         | 自带私有 menory 共享session级别menory
 
-单次 loop per invocation
-
-DAG 计划 + state 共享
-
-无内置 DAG 调度
-
-Agent 读取 manifest → act
-
-OpenClaw loop 执行技能与 workflow
-
-Agent 退出後继承现场
-
-每次 run 都由 manifest 驱动
-
+run 都由 manifest 驱动       | run 由 heart-beat-loop驱动
+`````
 ***
 
 ✅ 最终结论
 ------
 
-✔ 你之前的 Nexus orchestrator 逻辑不是与 OpenClaw 冲突，  
+✔ Nexus orchestrator 逻辑不是与 OpenClaw 冲突，  
 它是一种 **上层执行规范 / 协同层**。
 
-✔ 在 OpenClaw 中**orchestrator 在后台自动统筹推进项目往目标前进**，  
-通过自身先验的system instruction规范 + Manifest Server + 按状态触发 agents loop，  
-实现你想要的接力推进逻辑。
+✔ **orchestrator** 在**OpenClaw** 中**自动统筹**推进Nexus项目往目标前进，  
+通过openclaw下**identity.md +soul.md** 里设定先验**system instruction**规范 + Manifest Server + 按状态触发 agents loop，  
+实现Nexus想要的接力推进逻辑。

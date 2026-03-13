@@ -20,6 +20,7 @@ D:\OpenClaw\Workspace\project
 |   └── meeting_minutes/         # 历次冲突解决会议的 Markdown 记录
 └── 
 ```
+ **Menory Artifact**
 ```json
 {
   "artifact_type": "memory",
@@ -32,9 +33,86 @@ D:\OpenClaw\Workspace\project
 }
 ```
 
+- **Knowledge Artifact**
+```json
+{
+  "artifact_id": "uuid",
+  "agent_id": "string",
+  "artifact_type": "knowledge",
+  "tags": ["pdf","skill"],
+  "status": "solid",
+  "value: {
+  "inputs": [],
+  "outputs": []
+   }
+}
+```
+- **State Artifact**
+```josn
+{
+  "type": "state",
+  "agent": "market-analysis",
+  "object": "BTC-USD",
+  "stage": "analysis_complete",
+  "timestamp": 1710000000
+}
+```
+- **Process Artifact**
+```json
+{
+  "type": "process",
+  "agent": "market-analysis",
+  "workflow": "trend_scan",
+  "status": "completed",
+  "inputs": ["BTC-USD"],
+  "outputs": ["trend_report.json"],
+  "timestamp": 1710000001
+}
+```
+
+- **结构**一个最小的artifact应当如下：
+```json
+{
+  "artifact_id": "uuid",
+  "agent_id": "string",
+  "artifact_type": "memory|state|knowledge",
+  "tags": "string",
+  "status": "draft|solid|locked",
+  "value: {
+  "inputs": [],
+  "outputs": []
+   },
+  "payload": {},
+  "created_at": "timestamp"
+}
+```
+
+**nexus_manifest.json**
 ```json
 
+{
+  "project_fingerprint": "hash_v2026_xyz",
+  "artifact_registry": {},
+  "entropy_control": {
+    "solidified_nodes": [],
+    "active_variance": []
+  },
+  "handoff_logic": {
+    "pits": [],
+    "dead_ends": [],
+    "open_loops": []
+  },
+  "task_graph": {
+    "DataMiner": ["completed", "DataMiner"],
+    "LogicFixer": ["running", "DataMiner"],
+    "RiskEngine": ["pedding", "LogicFixer"]
+  }
+}
 
+```
+**decision_log.json**
+```json
+[]
 ```
 
 

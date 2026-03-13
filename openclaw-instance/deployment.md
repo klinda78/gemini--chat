@@ -150,6 +150,6 @@ Agent 退出後继承现场
 ✔ 你之前的 Nexus orchestrator 逻辑不是与 OpenClaw 冲突，  
 它是一种 **上层执行规范 / 协同层**。
 
-✔ 在 OpenClaw 中**不会有 agent 永动后台自动推进**，  
+✔ 在 OpenClaw 中**orchestrator 在后台自动统筹推进项目往目标前进**，  
 但你可以通过规范 + Manifest Server + 按状态触发 agent loop，  
 实现你想要的接力推进逻辑。

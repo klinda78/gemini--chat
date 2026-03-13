@@ -20,3 +20,16 @@ D:\OpenClaw\Workspace\project
 |   └── meeting_minutes/         # 历次冲突解决会议的 Markdown 记录
 └── 
 ```
+
+
+**meeting\_minutes.md**
+
+*   **\[议题\]**: 为什么吵架？（如：Python 处理大数与 Node 处理大数的溢出矛盾）
+    
+*   **\[立场 A\]**: DataMiner 的建议。
+    
+*   **\[立场 B\]**: LogicFixer 的反对理由。
+    
+*   **\[裁决方案\]**: 最终选定的路径及其逻辑。
+    
+*   **\[Manifest 更新点\]**: 哪些新规则被写入了“物理约束”。

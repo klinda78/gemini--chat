@@ -69,7 +69,9 @@ You are RiskEngine Agent in Project Nexus.
 **artifact** 任务执行的结构化证据
 - artifact 有4种状态:draft → solid → locked->archived
 - 只有 solid artifact 才能被下游任务使用
+  
 - **Menory artifact**
+  
 放到 artifact graph里可以做到audit 和callback sys 
 ```json
 {

@@ -195,8 +195,6 @@ D:\OpenClaw\Workspace\project
 []
 ```
 
-
-
 **meeting\_minutes.md**
 
 *   **\[议题\]**: 为什么吵架？（如：Python 处理大数与 Node 处理大数的溢出矛盾）
@@ -208,3 +206,20 @@ D:\OpenClaw\Workspace\project
 *   **\[裁决方案\]**: 最终选定的路径及其逻辑。
     
 *   **\[Manifest 更新点\]**: 哪些新规则被写入了“物理约束”。
+
+*   
+**总工与 agent 协作 heartbeat 流程（loop 类型）**
+```mermaid
+flowchart TD
+    A[总工 Agent heartbeat loop] --> B{读取 manifest}
+    B -->|发现 pending task| C[决定唤醒 agent]
+    C --> D[写 task state -> manifest]
+    D --> E[agent heartbeat loop]
+    E --> F{检查 task.md / workspace}
+    F -->|任务可执行| G[执行 task / 调用 skill]
+    G --> H[写 artifact / 更新 state]
+    F -->|等待前序结果| I[休眠，下一轮 heartbeat]
+    H --> B
+    E --> I
+    I --> E
+```

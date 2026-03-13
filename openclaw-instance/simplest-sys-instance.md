@@ -69,7 +69,7 @@ You are RiskEngine Agent in Project Nexus.
 **artifact** 任务执行的结构化证据
 - artifact 有4种状态:draft → solid → locked->archived
 - 只有 solid artifact 才能被下游任务使用
-- **menory artifact**
+- **Menory artifact**
 放到 artifact graph里可以做到audit 和callback sys 
 ```json
 {
@@ -83,7 +83,7 @@ You are RiskEngine Agent in Project Nexus.
 }
 
 ```
-- **knowledge artifact**
+- **Knowledge artifact**
 ```json
 {
   "artifact_id": "uuid",
@@ -97,6 +97,29 @@ You are RiskEngine Agent in Project Nexus.
    }
 }
 ```
+- **State artifact**
+```josn
+{
+  "type": "state",
+  "agent": "market-analysis",
+  "object": "BTC-USD",
+  "stage": "analysis_complete",
+  "timestamp": 1710000000
+}
+```
+- **Process Artifact**
+```json
+{
+  "type": "process",
+  "agent": "market-analysis",
+  "workflow": "trend_scan",
+  "status": "completed",
+  "inputs": ["BTC-USD"],
+  "outputs": ["trend_report.json"],
+  "timestamp": 1710000001
+}
+```
+
 - **结构**一个最小的artifact应当如下：
 ```json
 {

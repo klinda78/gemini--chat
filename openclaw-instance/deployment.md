@@ -7,7 +7,13 @@
 
 ### 🧩 1) 启动 Manifest Server（Nexus MCP）
 
-这个服务是你规范里的 “唯一真相源 (SSOT)”：
+这个服务是
+1：提供一个映射的系统状态，是了解系统状态的 “唯一真相源 (SSOT)”
+2：它是将 gents 的 Artifact 输出信息，映射为规范性状态模型的服务，
+3：它是人类了解系统和参与multi agent系统的可视化窗口
+4：它把稳定的系统状态，看作是一种数学期望
+5：它通过附加了audit 约束的过程，先验了一个“目标状态”，maninfest系统可以将是否偏离或者达成了此目标的过程（drift normalize-state）量化
+6：系统在runtime中形成负反馈机制 → 降低 entropy（提高稳定性）-> 达成"目标"
 
 node manifest-server.js
 

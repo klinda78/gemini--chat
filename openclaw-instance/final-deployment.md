@@ -257,7 +257,7 @@ D:\OpenClaw\Workspace\project
     }
   },
   "scheduler": {
-    "poll_interval": "250s",
+    "poll_interval": "300s",
     "concurrent_limit": 2,
     "retry_policy": "exponential_backoff"
   }
@@ -306,7 +306,7 @@ flowchart TD
 
 *   每个 task 都有 `status` 和 `dependencies`。
     
-*   `worker_agent` 指明执行该任务的 agent。
+*   `worker_agent` ：是被指派执行任务的 agent。
     
 *   可以控制 **并发** 和 **执行顺序**：
     
@@ -333,7 +333,7 @@ flowchart TD
 
 ### 4\. 调度器参数
 
-*   `poll_interval`：planner agent 检查 manifest 更新的频率。
+*   `poll_interval`：planner agent 检查 manifest 更新的频率，默认为300秒。
     
 *   `concurrent_limit`：并行执行的任务数。
     

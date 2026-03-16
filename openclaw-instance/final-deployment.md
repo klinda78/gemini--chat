@@ -192,6 +192,78 @@ D:\OpenClaw\Workspace\project
 }
 
 ```
+**一个完整的manifest示例**
+```json
+{
+  "project_fingerprint": "hash_v2026",
+  "artifact_registry": {},
+  "entropy_control": {
+    "solidified_nodes": [],
+    "active_variance": []
+  },
+  "handoff_logic": {
+    "pits": [],
+    "dead_ends": [],
+    "open_loops": []
+  },
+  "task_graph": {
+    "DataMiner": {
+      "status": "completed",
+      "dependencies": [],
+      "worker_agent": "Worker_Agent_1",
+      "retry": 0,
+      "timeout": "30m"
+    },
+    "LogicFixer": {
+      "status": "running",
+      "dependencies": ["DataMiner"],
+      "worker_agent": "Worker_Agent_2",
+      "retry": 0,
+      "timeout": "20m"
+    },
+    "RiskEngine": {
+      "status": "pending",
+      "dependencies": ["LogicFixer"],
+      "worker_agent": "Worker_Agent_3",
+      "retry": 0,
+      "timeout": "15m"
+    }
+  },
+  "agents": {
+    "Manager_Agent": {
+      "role": "planner",
+      "workspace": "D:/tools/agent-tools/manager",
+      "heartbeat": true,
+      "capabilities": ["task_assignment", "manifest_update", "result_audit"]
+    },
+    "Worker_Agent_1": {
+      "role": "executor",
+      "workspace": "D:/tools/agent-tools/worker1",
+      "heartbeat": true,
+      "capabilities": ["execute_task", "write_artifact", "report_status"]
+    },
+    "Worker_Agent_2": {
+      "role": "executor",
+      "workspace": "D:/tools/agent-tools/worker2",
+      "heartbeat": true,
+      "capabilities": ["execute_task", "write_artifact", "report_status"]
+    },
+    "Worker_Agent_3": {
+      "role": "executor",
+      "workspace": "D:/tools/agent-tools/worker3",
+      "heartbeat": true,
+      "capabilities": ["execute_task", "write_artifact", "report_status"]
+    }
+  },
+  "scheduler": {
+    "poll_interval": "5s",
+    "concurrent_limit": 2,
+    "retry_policy": "exponential_backoff"
+  }
+}
+
+```
+
 **decision_log.json**
 ```json
 []

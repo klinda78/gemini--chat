@@ -66,10 +66,10 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 1 Warm Start: read manifest.json + %my_workspace%/artifact.json + decision_log.json(类似加载了项目知识库)
 **伪代码**
 
-      if task askfor taking over handoff_block:
+      if task askfor taking over handoff_ waiting:
             spawn(skills/detect PITs-dead_ends-open_loops.skill)
                  ......
-                 spawn(skills/update_handoff(handoff_id)  # 把自己接手的handoff（可能是其他agent遗留的)更新到自己decision.json并@总工
+                 spawn(skills/update_handoff(handoff_id)  #把完成的handoff(可能是其他agent遗留)更新到自己decision.json并@总工
             -->exit
       if has unfinish task:
            spawn task:

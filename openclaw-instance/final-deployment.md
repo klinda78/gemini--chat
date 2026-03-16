@@ -165,7 +165,7 @@ D:\OpenClaw\Workspace\project
   "artifact_type": "Process",
   "tags": ["ma-trading-signal"],
   "status": "draft|solid|locked",
-  "value: {
+  "value": {
   "inputs": ["raw_scan_results"],
   "outputs": ["5min_bars.json"]
    },

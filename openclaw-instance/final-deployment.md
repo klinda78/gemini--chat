@@ -1,3 +1,4 @@
+## 部署详情：
 **总工 prompt**
 
 ```
@@ -256,7 +257,7 @@ D:\OpenClaw\Workspace\project
     }
   },
   "scheduler": {
-    "poll_interval": "5s",
+    "poll_interval": "250s",
     "concurrent_limit": 2,
     "retry_policy": "exponential_backoff"
   }
@@ -297,3 +298,43 @@ flowchart TD
     E --> I
     I --> E
 ```
+## 附录：
+**manifest 相关注释说明**
+-----
+
+### 1\. 任务状态与依赖
+
+*   每个 task 都有 `status` 和 `dependencies`。
+    
+*   `worker_agent` 指明执行该任务的 agent。
+    
+*   可以控制 **并发** 和 **执行顺序**：
+    
+    *   `concurrent_limit` 表示最多多少任务可以同时执行。
+        
+    *   每个任务会检查其依赖状态，依赖完成后才能执行。
+        
+
+### 2\. Agent 分层
+
+*   `Manager_Agent`：总工 / planner，永动 agent，负责任务分配、manifest 更新和结果审阅。
+    
+*   `Worker_Agent_X`：执行者 / executor，永动 agent 或 spawn task，调用 CLI / skill 执行具体任务，保持 stateless process。
+    
+
+### 3\. 心跳与执行安全
+
+*   所有 agent 都开启 `heartbeat`。
+    
+*   Worker agent 的 CLI 调用仍然 spawn process → exit，避免长期 shell session。
+    
+*   Planner agent 不直接操作 CLI，只管理任务流和调度。
+    
+
+### 4\. 调度器参数
+
+*   `poll_interval`：planner agent 检查 manifest 更新的频率。
+    
+*   `concurrent_limit`：并行执行的任务数。
+    
+*   `retry_policy`：任务失败后的重试策略。

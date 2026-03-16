@@ -47,8 +47,8 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 2 接受agent的提交申请 ，并在每个模块固化后更新manifest文件
 3 接受 agent的 handoff 通知，记录到manifest。
 3 可以再次invoke agent:
-    a:依赖次序的task，而不得不handoff的task，当前task继续推动的条件已经具备
-    b:某模块为未完成，执行该任务的agent 状态已标识为handoff/，查询会议记录[裁决方案],依据方案做出再次任务【指派/终止】。 
+    a:依赖次序的task，而不得不handoff.status:waiting的task，当前task继续推动的条件已经具备
+    b:某模块为未完成，执行该任务的agent 状态--> exit/，查询会议记录[裁决方案],依据方案做出再次任务【指派/终止】。 
 你通过以上途径模式推动项目。
 你每30分钟阅读一次manifest， 了解成果并把进展向老板汇报。
 ```
@@ -69,10 +69,11 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
       if task askfor laoding handoff_block:
             spawn(skills/detect PITs-dead_ends-open_loops.skill)
                  ......
+                 spawn(skills/update_handoff(handoff_id)  # 把自己接手的handoff（可能是其他agent遗留的)更新到自己decision.json并@总工
                  -->exit
       if has unfinish task:
            spawn task:
-              .....
+              .....spawn(skills/Shadow Handoff)
               -->exit     
 
 3 可以合理决定是否把自己的模块拆分为几个子任务模块
@@ -80,7 +81,7 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 5 在完成子模块后，启用 Shadow Handoff：
         必须写artifact ，记录模块成果
 **伪代码**
- Shadow Handoff: update artifact.json + write decision_log.json or marked handoff_event:completed
+ Shadow Handoff: update artifact.json + write decision_log.json or marked takeover_handoff_event:completed
 
 6 当你觉得某个模块工作可以固化，你更新item.state:lock，并@总工进行提交申请
 
@@ -215,10 +216,22 @@ D:\OpenClaw\Workspace\project
 ```json
 {
   "project_fingerprint": "hash_v2026",
-  "artifact_registry": {},
-  "entropy_control": {
-    "solidified_nodes": [],
-    "active_variance": []
+  "artifact_registry": {
+      {"item_id":"agent_id_artifactid",
+     "value":{
+          "timestamp": " xxxxxx"
+           version:"1.0"
+       }},
+     { "item_id":"agent_id_artifactid",
+     "value":{
+          "timestamp": " xxxxxx"
+           version:"1.0"
+        }
+      }
+   },
+  "resource-status": {
+    "finish_tasks": [],
+    "online_worker": [worker_agent_1,worker_agent_2]
   },
   "handoff_event": {
     {"handoff_id": 1,
@@ -226,7 +239,7 @@ D:\OpenClaw\Workspace\project
         "pits": 21,
         "artifact": 5,
         "agent_id":"Worker_Agent_3",
-        "satus":"pedding",
+        "satus":"waiting",
          "successer":""
          }
       },
@@ -235,7 +248,7 @@ D:\OpenClaw\Workspace\project
         "pits": 11,
         "artifact": 3,
         "agent_id":"Worker_Agent_2",
-        "satus":"running",
+        "satus":"fixing",
          "successer":"Worker_Agent_2"
          }
       }
@@ -299,14 +312,18 @@ D:\OpenClaw\Workspace\project
 ```
 
 **decision_log.json**
+
 ```json
 ## handeoff_id  格式必须是:  agentid +"_PIT_" + number
+## status ： waiting|fixing|completed|ended
 {
   "solidified_nodes_recomend": {
     "commit_id": 3,   
     "tasks":["Header_Scanner", "Size_Validator"]
   },
   "handoff_payload": {
+    "status": "waiting",
+     "fixer": "",
     "pits": [
       {
         "handeoff_id": "Worker_Agent_3_PIT_27",

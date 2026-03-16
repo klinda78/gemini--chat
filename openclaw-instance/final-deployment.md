@@ -63,11 +63,12 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 
 一 你如何工作
 根据需要调用tool /skill，自编skill，coding，来完成任务是你的基本操作
-1 采用warnstart模式开始你的工作：先读取前任的artifact.md
-1 可以合理决定是否把自己的模块拆分为几个子任务模块
-2 在工作过程中按实际情况标注子模块的state
-3 在完成子模块后，必须写artifact ，记录模块成果
-4 当你觉得某个模块工作可以固化，你更新item.state:lock，并@总工进行提交申请
+1 Warm Start: read manifest + decision_log, detect PITs/dead_ends/open_loops
+2 Shadow Handoff: update manifest + decision_log, mark loops completed
+3 可以合理决定是否把自己的模块拆分为几个子任务模块
+4 在工作过程中按实际情况标注子模块的state
+5 在完成子模块后，必须写artifact ，记录模块成果
+6 当你觉得某个模块工作可以固化，你更新item.state:lock，并@总工进行提交申请
 
 二 你可以选择4种 handoff模式
 
@@ -88,8 +89,8 @@ D:\OpenClaw\Workspace\project
 ├── 🛡️ scope/                   # 物理隔离区 (Sandbox)
 │   ├── agent1-workspace/               # Agent A 工作领地
 │   │   ├── temp/               # 临时空间
-|   |   ├── artifact.md         # 项目知识库产物
-│   │   ├── decision.log        # hand-off&meeting-calling records
+|   |   ├── artifact.json         # 项目知识库产物
+│   │   ├── decision_log.json        # hand-off&meeting-calling records
 |   |   ├── task.md
 │   │   └── artifact/           # 固化产物区(The Truth)
 │   │            ├── temp/                    # 临时计算空间
@@ -103,6 +104,7 @@ D:\OpenClaw\Workspace\project
 │   ├──📜 logs/                    # 审计足迹
 |   ├── Auditor-agent/                 # 审计者的空间
 |   └── meeting_minutes/         # 历次冲突解决会议的 Markdown 记录
+            └── meeting.md/
 └── 
 ```
  **Menory Artifact**
@@ -204,10 +206,19 @@ D:\OpenClaw\Workspace\project
     "solidified_nodes": [],
     "active_variance": []
   },
-  "handoff_logic": {
-    "pits": [],
-    "dead_ends": [],
-    "open_loops": []
+  "handoff_event": {
+    {"handoff_id": 1,
+      "value": "pits": ['21'],
+      "agent_id":"Worker_Agent_3",
+      "satus":"pedding",
+      "successer":""
+      },
+    {"handoff_id": 2,
+      "value": "pits": ['11'],
+      "agent_id":"Worker_Agent_2",
+      "satus":"forward",
+      "successer":"Worker_Agent_3"
+      }
   },
   "task_graph": {
     "DataMiner": {

@@ -296,26 +296,31 @@ D:\OpenClaw\Workspace\project
 ```
 **handoff_queue.json**
 ```
-  "handoff_event": {
-    {"handoff_id": 1,
+ {
+  "handoff_events": [
+    {
+      "handoff_id": "Worker_Agent_3_PIT_27",
       "detail": {
         "pits": 21,
         "artifact": 5,
-        "agent_id":"Worker_Agent_3",
-        "satus":"waiting",
-         "successer":""
-         }
-      },
-    {"handoff_id": 2,
+        "agent_id": "Worker_Agent_3",
+        "status": "waiting",
+        "successor": ""
+      }
+    },
+
+    {
+      "handoff_id": "Worker_Agent_2_PIT_11",
       "detail": {
         "pits": 11,
         "artifact": 3,
-        "agent_id":"Worker_Agent_2",
-        "satus":"fixing",
-         "successer":"Worker_Agent_2"
-         }
+        "agent_id": "Worker_Agent_2",
+        "status": "fixing",
+        "successor": "Worker_Agent_2"
       }
-  },
+    }
+  ]
+}
 
 ```
 

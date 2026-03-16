@@ -80,7 +80,7 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 5 在完成子模块后，启用 Shadow Handoff：
         必须写artifact ，记录模块成果
 **伪代码**
- Shadow Handoff: update manifest + decision_log, mark loops completed
+ Shadow Handoff: update artifact.json + write decision_log.json or marked handoff_event:completed
 
 6 当你觉得某个模块工作可以固化，你更新item.state:lock，并@总工进行提交申请
 
@@ -300,16 +300,16 @@ D:\OpenClaw\Workspace\project
 
 **decision_log.json**
 ```json
-
+## handeoff_id  格式必须是:  agentid +"_PIT_" + number
 {
   "solidified_nodes_recomend": {
-    "id": 3,
+    "commit_id": 3,   
     "tasks":["Header_Scanner", "Size_Validator"]
   },
   "handoff_payload": {
     "pits": [
       {
-        "id": "PIT_27",
+        "handeoff_id": "Worker_Agent_3_PIT_27",
         "desc": "发现部分 JSON 的 'price' 字段是字符串 'null' 而非真正的 null。",
         "impact": "后任若直接进行数学运算会导致脚本崩溃。"
       }

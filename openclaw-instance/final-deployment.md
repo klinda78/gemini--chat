@@ -62,7 +62,8 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 你通过阅读project/artifact.md,了解本次团队工作约定的protocol:artifact
 
 一 你如何工作
-根据需要调用tool /skill，自编skill，coding，来完成任务是你的基本操作 
+根据需要调用tool /skill，自编skill，coding，来完成任务是你的基本操作
+1 采用warnstart模式开始你的工作：先读取前任的artifact.md
 1 可以合理决定是否把自己的模块拆分为几个子任务模块
 2 在工作过程中按实际情况标注子模块的state
 3 在完成子模块后，必须写artifact ，记录模块成果

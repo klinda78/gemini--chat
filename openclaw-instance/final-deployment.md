@@ -220,18 +220,18 @@ D:\OpenClaw\Workspace\project
       {"item_id":"agent_id_artifactid",
      "value":{
           "timestamp": " xxxxxx"
-           version:"1.0"
+           "version":"1.0"
        }},
      { "item_id":"agent_id_artifactid",
      "value":{
           "timestamp": " xxxxxx"
-           version:"1.0"
+           "version":"1.0"
         }
       }
    },
   "resource-status": {
     "finish_tasks": [],
-    "online_worker": [worker_agent_1,worker_agent_2]
+    "online_worker": ["worker_agent_1","worker_agent_2"]
   },
   "handoff_event": {
     {"handoff_id": 1,

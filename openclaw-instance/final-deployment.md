@@ -88,7 +88,8 @@ D:\OpenClaw\Workspace\project
 ├── 🛡️ scope/                   # 物理隔离区 (Sandbox)
 │   ├── agent1-workspace/               # Agent A 工作领地
 │   │   ├── temp/               # 临时空间
-|   |   ├── artifact.md          # 项目知识库产物
+|   |   ├── artifact.md         # 项目知识库产物
+│   │   ├── decision.log        # hand-off&meeting-calling records
 |   |   ├── task.md
 │   │   └── artifact/           # 固化产物区(The Truth)
 │   │            ├── temp/                    # 临时计算空间
@@ -154,17 +155,17 @@ D:\OpenClaw\Workspace\project
 }
 ```
 
-- **结构**一个最小的artifact应当如下：
+- **完整artifact结构示例**一个最小的artifact应当如下：
 ```json
 {
-  "artifact_id": "uuid",
+  "artifact_id": "agentid_12",
   "agent_id": "string",
-  "artifact_type": "memory|state|knowledge",
-  "tags": "string",
+  "artifact_type": "Process",
+  "tags": ["ma-trading-signal"],
   "status": "draft|solid|locked",
   "value: {
-  "inputs": [],
-  "outputs": []
+  "inputs": ["raw_scan_results"],
+  "outputs": ["5min_bars.json"]
    },
   "payload": {},
   "created_at": "timestamp"
@@ -268,7 +269,25 @@ D:\OpenClaw\Workspace\project
 
 **decision_log.json**
 ```json
-[]
+
+{
+  "solidified_nodes_recomend": {
+    "id": 3,
+     tasks:["Header_Scanner", "Size_Validator"]
+  },
+  "handoff_payload": {
+    "pits": [
+      {
+        "id": "PIT_27",
+        "desc": "发现部分 JSON 的 'price' 字段是字符串 'null' 而非真正的 null。",
+        "impact": "后任若直接进行数学运算会导致脚本崩溃。"
+      }
+    ],
+    "dead_ends": ["尝试使用原生的 ijson 库处理，但在多层嵌套时内存溢出，已改用自定义流式解析器。"],
+    "open_loops" : "需要在修复脚本中增加一个『类型预转换』层来处理 PIT_77。"
+  },
+  "artifacts_pointer": {"artifact_id": "12"}
+}
 ```
 
 **meeting\_minutes.md**

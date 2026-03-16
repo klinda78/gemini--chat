@@ -227,9 +227,9 @@ def skill_manager_planning():
 
 *   Worker → notice_manager(info.json) → Manager
 
-*   Manager → planning → spawn 下一个 agent
+*   Manager → planning → spawn 下一个 agen(task,handoff_id)
 
-*   handoff 与 artifact 一一映射
+*   handoff 与 artifact 构成项目知识库
 
 *   worker 总是同步 artifact.json + decision_log.json
 

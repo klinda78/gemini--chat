@@ -217,20 +217,20 @@ def skill_manager_planning():
 ```
 🔹 总结
 
-* 永动 agent 模式
+1. 永动 agent 模式
 
-Worker 永动循环负责执行和提交 handoff
+*   Worker 永动循环负责执行和提交 handoff
 
-Manager 永动循环负责调度、规划和 spawn
+*   Manager 永动循环负责调度、规划和 spawn
 
-* 数据流清晰
+2. 数据流清晰
 
-** Worker → notice_manager(info.json) → Manager
+*   Worker → notice_manager(info.json) → Manager
 
-** Manager → planning → spawn 下一个 agent
+*   Manager → planning → spawn 下一个 agent
 
-** handoff 与 artifact 一一映射
+*   handoff 与 artifact 一一映射
 
-** worker 总是同步 artifact.json + decision_log.json
+*   worker 总是同步 artifact.json + decision_log.json
 
-** takeover agent 可直接 warm_start
+*   takeover agent 可直接 warm_start

@@ -128,7 +128,7 @@ D:\OpenClaw\Workspace\project
   "artifact_type": "knowledge",
   "tags": ["pdf","skill"],
   "status": "solid",
-  "value: {
+  "value": {
   "inputs": [],
   "outputs": []
    }
@@ -208,7 +208,7 @@ D:\OpenClaw\Workspace\project
   },
   "handoff_event": {
     {"handoff_id": 1,
-      "value": {
+      "detail": {
         "pits": 21,
         "artifact": 5,
         "agent_id":"Worker_Agent_3",
@@ -217,7 +217,7 @@ D:\OpenClaw\Workspace\project
          }
       },
     {"handoff_id": 2,
-      "value": {
+      "detail": {
         "pits": 11,
         "artifact": 3,
         "agent_id":"Worker_Agent_2",

@@ -208,16 +208,22 @@ D:\OpenClaw\Workspace\project
   },
   "handoff_event": {
     {"handoff_id": 1,
-      "value": "pits": ['21'],
-      "agent_id":"Worker_Agent_3",
-      "satus":"pedding",
-      "successer":""
+      "value": {
+        "pits": 21,
+        "artifact": 5,
+        "agent_id":"Worker_Agent_3",
+        "satus":"pedding",
+         "successer":""
+         }
       },
     {"handoff_id": 2,
-      "value": "pits": ['11'],
-      "agent_id":"Worker_Agent_2",
-      "satus":"forward",
-      "successer":"Worker_Agent_3"
+      "value": {
+        "pits": 11,
+        "artifact": 3,
+        "agent_id":"Worker_Agent_2",
+        "satus":"running",
+         "successer":"Worker_Agent_2"
+         }
       }
   },
   "task_graph": {

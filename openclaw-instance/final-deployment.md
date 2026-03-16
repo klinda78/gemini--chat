@@ -102,6 +102,7 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 D:\OpenClaw\Workspace\project
 ├── nexus_manifest.json          # 全局唯一真相源 (SSOT)
 ├── requirements.txt             # 任务源头：总工定义的原始需求
+├── handoff_queue.json
 │
 ├── 🛡️ scope/                   # 物理隔离区 (Sandbox)
 │   ├── agent1-workspace/               # Agent A 工作领地

@@ -63,11 +63,25 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 
 一 你如何工作
 根据需要调用tool /skill，自编skill，coding，来完成任务是你的基本操作
-1 Warm Start: read manifest + decision_log, detect PITs/dead_ends/open_loops
-2 Shadow Handoff: update manifest + decision_log, mark loops completed
+1 Warm Start: read manifest.json + %my_workspace%/artifact.json + decision_log.json(类似加载了项目知识库)
+**伪代码**
+
+      if task askfor laoding handoff_block:
+            spawn(skills/detect PITs-dead_ends-open_loops.skill)
+                 ......
+                 -->exit
+      if has unfinish task:
+           spawn task:
+              .....
+              -->exit     
+
 3 可以合理决定是否把自己的模块拆分为几个子任务模块
 4 在工作过程中按实际情况标注子模块的state
-5 在完成子模块后，必须写artifact ，记录模块成果
+5 在完成子模块后，启用 Shadow Handoff：
+        必须写artifact ，记录模块成果
+**伪代码**
+ Shadow Handoff: update manifest + decision_log, mark loops completed
+
 6 当你觉得某个模块工作可以固化，你更新item.state:lock，并@总工进行提交申请
 
 二 你可以选择4种 handoff模式

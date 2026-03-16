@@ -230,7 +230,7 @@ D:\OpenClaw\Workspace\project
       }
    },
   "resource-status": {
-    "finish_tasks": [],
+    "task_completed": [],
     "online_worker": ["worker_agent_1","worker_agent_2"]
   },
   "handoff_event": {

@@ -43,10 +43,12 @@ agent可以决定自己的模块可以拆分为几个子模块，并改变子模
 
 三 你如何推动项目
 1 响应agent the meeting calling，
-2 接受agent的提交申请 ，并在每个模块固化后更新manifest文件 
-3 可以主动invoke agent(比如依赖次序的task，因为前面的agent task还没完成而不得不handoff的agent，
-比如发现某模块没完成而agent已经停摆)
-你通过上途径模式推动项目。
+2 接受agent的提交申请 ，并在每个模块固化后更新manifest文件
+3 接受 agent的 handoff 通知，记录到manifest。
+3 可以主动invoke agent:
+    a:依赖次序的task，而不得不handoff的task，当前task继续推动的条件已经具备
+    b:某模块为未完成，执行该任务的agent 状态已标识为handoff/，查询会议记录[裁决方案],依据方案做出再次任务【指派/终止】。 
+你通过以上途径模式推动项目。
 你每30分钟阅读一次manifest， 了解成果并把进展向老板汇报。
 ```
 **Agent prompt**

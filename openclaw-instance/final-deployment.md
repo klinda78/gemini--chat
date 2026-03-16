@@ -290,7 +290,7 @@ D:\OpenClaw\Workspace\project
 {
   "solidified_nodes_recomend": {
     "id": 3,
-     tasks:["Header_Scanner", "Size_Validator"]
+    "tasks":["Header_Scanner", "Size_Validator"]
   },
   "handoff_payload": {
     "pits": [

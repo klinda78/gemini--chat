@@ -236,26 +236,7 @@ D:\OpenClaw\Workspace\project
     "task_completed": [],
     "online_worker": ["worker_agent_1","worker_agent_2"]
   },
-  "handoff_event": {
-    {"handoff_id": 1,
-      "detail": {
-        "pits": 21,
-        "artifact": 5,
-        "agent_id":"Worker_Agent_3",
-        "satus":"waiting",
-         "successer":""
-         }
-      },
-    {"handoff_id": 2,
-      "detail": {
-        "pits": 11,
-        "artifact": 3,
-        "agent_id":"Worker_Agent_2",
-        "satus":"fixing",
-         "successer":"Worker_Agent_2"
-         }
-      }
-  },
+
   "task_graph": {
     "DataMiner": {
       "status": "completed",

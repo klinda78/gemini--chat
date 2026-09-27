@@ -1,16 +1,14 @@
-```
-
+````
 id: raw-240b1361-e1a8-407a-8767-5366560ae33b
 title: "重建工具职责层级"
 type: rawdata
 primary_topic: "了解AI工具的职能和关系"
-related\_topics:
+related_topics:
 - "sequence"  
 - "mermaid"
-source_ref: "[https://chatgpt.com/c/6a8de6fd-b12c-83eb-b8d8-bcf4a37a7e11](https://chatgpt.com/c/6a8de6fd-b12c-83eb-b8d8-bcf4a37a7e11)"
+source_ref: "[https://chatgpt.com/c/6a8de6fd-b12c-83eb-b8d8-bcf4a37a7e11"
 captured_at: 2026-08-26 status: draft
-
-```
+````
 
 \#\# Sequence / Execution Topology   
 \`\`\`  

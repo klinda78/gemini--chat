@@ -12,8 +12,38 @@ status: draft
 
 更完整可以这样抽象：
 
-```
-Mermaid
+```mermaid
+flowchart TB
+    T["Traffic / Service Layer"]
+    J["Job / Queue / State"]
+    W["Deterministic Workflow"]
+    A["Agent / Reasoning"]
+    E["Execution Layer"]
+
+    CS["Customer Operations<br/>客服 / 售后 / 工单 / 退款 / 人工介入"]
+    OBS["Observability / Audit<br/>日志 / Trace / 告警 / 审计"]
+    ID["Identity / Billing / Entitlement<br/>身份 / 计费 / 权益"]
+
+    T --> ID
+    ID --> J
+
+    J --> W
+    J --> A
+
+    W <--> A
+    W --> E
+    A --> E
+
+    J --> OBS
+    W --> OBS
+    A --> OBS
+    E --> OBS
+
+    CS --> J
+    CS --> OBS
+    CS --> ID
+
+    OBS --> CS
 ```
 
 这里客服系统的核心不是“聊天”，而是拥有**业务干预权**。比如客服要能：

@@ -14,16 +14,12 @@ status: draft
 | 系统 | 强项 | 本质上接管 |
 
 | --- | --- | --- |
-
 | ChatGPT Project | 长期讨论、研究、设计 | **Context** |
-
 | Codex | repo 探索、构建、重构 | **Structure** |
-
 | Claude Code | terminal/repo 内连续工程 | **Engineering Loop** |
-
 | OpenClaw | 长期运行、定时唤醒、agent 管理 | **Time** |
-
 | Lobster | deterministic workflow | **Procedure** |
+
 
 注意 **Claude Code 和 Codex 是这里竞争最直接的一对**。
 

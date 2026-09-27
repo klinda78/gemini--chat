@@ -29,8 +29,20 @@ status: draft
 
 这里最重要的是，前三者不是三个不同版本的“AI Agent”，而是在处理三种完全不同的连续性。
 
-```
-Mermaid
+```mermaid
+flowchart TB
+    HUMAN["Human / Business Goal"]
+    CONTEXT["ChatGPT Project<br/>Context"]
+    STRUCTURE["Codex Project<br/>Structure"]
+    TIME["OpenClaw Agent Session<br/>Time"]
+    PROCEDURE["Lobster Workflow<br/>Procedure"]
+
+    HUMAN --> CONTEXT
+    HUMAN --> STRUCTURE
+    HUMAN --> TIME
+    CONTEXT --> PROCEDURE
+    STRUCTURE --> PROCEDURE
+    TIME --> PROCEDURE
 ```
 
 ### 1. ChatGPT Project：接管 Context
@@ -136,8 +148,20 @@ spawn research worker
 
 于是整个系统变成：
 
-```
-Mermaid
+```mermaid
+flowchart TB
+    HUMAN["Human / Business Goal"]
+    CONTEXT["ChatGPT Project<br/>Context"]
+    STRUCTURE["Codex Project<br/>Structure"]
+    TIME["OpenClaw Agent Session<br/>Time"]
+    PROCEDURE["Lobster Workflow<br/>Procedure"]
+
+    HUMAN --> CONTEXT
+    HUMAN --> STRUCTURE
+    HUMAN --> TIME
+    CONTEXT --> PROCEDURE
+    STRUCTURE --> PROCEDURE
+    TIME --> PROCEDURE
 ```
 
 这样一来，有些以前容易混淆的问题就很好判断了。

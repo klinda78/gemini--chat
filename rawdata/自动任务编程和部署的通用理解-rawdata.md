@@ -13,16 +13,40 @@ status: draft
 
 你真正抽象出来的应该是四种**职责层**：
 
-```
-Mermaid
+```mermaid
+flowchart TB
+    CF["Traffic / Service Layer<br/>Cloudflare / API Gateway"]
+
+    N["Deterministic Workflow Layer<br/>n8n / Code / Temporal / Queue+Workers"]
+
+    O["Agent / Reasoning Layer<br/>OpenClaw / Lobster"]
+
+    B["Execution Layer<br/>Browser Agent / API / Local Worker"]
+
+    CF --> N
+    N --> O
+    N --> B
 ```
 
 这个版本已经具有相当好的通用性。
 
 但如果继续抽象，我认为还应该允许两条旁路：
 
-```
-Mermaid
+```mermaid
+flowchart TB
+    T["Traffic / Service Layer"]
+    W["Deterministic Workflow Layer"]
+    A["Agent / Reasoning Layer"]
+    E["Execution Layer"]
+
+    T --> W
+    T --> A
+
+    W --> A
+    W --> E
+
+    A --> W
+    A --> E
 ```
 
 原因在于 **Workflow 和 Agent 不是严格的上下级关系**。

@@ -110,7 +110,7 @@ Structure
 
 ******Procedure → Time******：流程走不下去了，因为遇到了需要理解、判断、研究的不确定性，于是把控制权交给 Agent。
 
-******Time → Procedure\***\***：Agent 已经把不确定问题压缩成明确任务，于是重新交给确定性 workflow 稳定执行。
+**Time → Procedure**：Agent 已经把不确定问题压缩成明确任务，于是重新交给确定性 workflow 稳定执行。
 
 ******Structure → Runtime******：发现不是“判断一下”能解决，而是系统本身缺能力，于是 Codex 改变 OpenClaw/n8n 的能力空间。
 

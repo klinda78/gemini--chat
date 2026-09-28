@@ -14,18 +14,17 @@ status: draft
 你真正抽象出来的应该是四种**职责层**：
 
 ```mermaid
-flowchart TB
-    CF["Traffic / Service Layer<br/>Cloudflare / API Gateway"]
+flowchart LR
+    TRAFFIC["Traffic / Service"]
+    WORKFLOW["Deterministic Workflow"]
+    AGENT["Agent / Reasoning"]
+    EXECUTION["Execution"]
 
-    N["Deterministic Workflow Layer<br/>n8n / Code / Temporal / Queue+Workers"]
-
-    O["Agent / Reasoning Layer<br/>OpenClaw / Lobster"]
-
-    B["Execution Layer<br/>Browser Agent / API / Local Worker"]
-
-    CF --> N
-    N --> O
-    N --> B
+    TRAFFIC --> WORKFLOW
+    TRAFFIC --> AGENT
+    WORKFLOW <--> AGENT
+    WORKFLOW --> EXECUTION
+    AGENT --> EXECUTION
 ```
 
 这个版本已经具有相当好的通用性。
@@ -33,20 +32,15 @@ flowchart TB
 但如果继续抽象，我认为还应该允许两条旁路：
 
 ```mermaid
-flowchart TB
-    T["Traffic / Service Layer"]
-    W["Deterministic Workflow Layer"]
-    A["Agent / Reasoning Layer"]
-    E["Execution Layer"]
+flowchart LR
+    TRAFFIC["Traffic / Service"]
+    WORKFLOW["Workflow"]
+    AGENT["Agent"]
+    EXECUTION["Execution"]
 
-    T --> W
-    T --> A
-
-    W --> A
-    W --> E
-
-    A --> W
-    A --> E
+    TRAFFIC --> WORKFLOW --> EXECUTION
+    TRAFFIC --> AGENT --> EXECUTION
+    WORKFLOW <--> AGENT
 ```
 
 原因在于 **Workflow 和 Agent 不是严格的上下级关系**。
@@ -54,10 +48,15 @@ flowchart TB
 ### 四层真正解决的是四种不同问题
 
 | 层 | 核心问题 |
+
 | --- | --- |
+
 | Traffic / Service | **谁在请求？如何接住请求？** |
+
 | Deterministic Workflow | **已知流程应该怎样可靠执行？** |
+
 | Agent / Reasoning | **流程不能预先确定时，下一步应该做什么？** |
+
 | Execution | **最终怎样对真实世界产生动作？** |
 
 所以一个请求可能是：
@@ -111,8 +110,14 @@ Execution
 
 而我们前面讨论的**规模问题**，其实是在这个图下面再增加一个与业务逻辑正交的层：
 
-```
-Mermaid
+```mermaid
+flowchart TB
+    TRAFFIC["Traffic"] --> STATE["Job / Queue / State"]
+    STATE --> WORKERS["Workers"]
+    WORKERS --> WORKFLOW["Workflow"]
+    WORKERS --> AGENT["Agent"]
+    WORKFLOW --> EXECUTION["Execution"]
+    AGENT --> EXECUTION
 ```
 
 这里就出现了我们之前那个非常重要的 boundary：

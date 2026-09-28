@@ -14,36 +14,19 @@ status: draft
 
 ```mermaid
 flowchart TB
-    T["Traffic / Service Layer"]
-    J["Job / Queue / State"]
-    W["Deterministic Workflow"]
-    A["Agent / Reasoning"]
-    E["Execution Layer"]
+    TRAFFIC["Traffic / Entry"] --> JOB["Job / Scale"]
+    JOB --> WORKFLOW["Workflow / Deterministic Process"]
+    JOB --> AGENT["Agent / Uncertain Decisions"]
+    WORKFLOW --> EXECUTION["Execution / Real-world Actions"]
+    AGENT --> EXECUTION
+    EXECUTION --> OBSERVABILITY["Observability / Trace"]
 
-    CS["Customer Operations<br/>客服 / 售后 / 工单 / 退款 / 人工介入"]
-    OBS["Observability / Audit<br/>日志 / Trace / 告警 / 审计"]
-    ID["Identity / Billing / Entitlement<br/>身份 / 计费 / 权益"]
-
-    T --> ID
-    ID --> J
-
-    J --> W
-    J --> A
-
-    W <--> A
-    W --> E
-    A --> E
-
-    J --> OBS
-    W --> OBS
-    A --> OBS
-    E --> OBS
-
-    CS --> J
-    CS --> OBS
-    CS --> ID
-
-    OBS --> CS
+    CUSTOMER["Customer Operations<br/>Human Control Plane"] --> JOB
+    CUSTOMER --> WORKFLOW
+    CUSTOMER --> AGENT
+    CUSTOMER --> EXECUTION
+    IDENTITY["Identity / Billing<br/>Commercial Relationship"] --> TRAFFIC
+    IDENTITY --> CUSTOMER
 ```
 
 这里客服系统的核心不是“聊天”，而是拥有**业务干预权**。比如客服要能：

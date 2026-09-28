@@ -16,10 +16,15 @@ status: draft
 我会把它重新表述成：
 
 | 系统 | 最适合接管的东西 | 核心状态 |
+
 | --- | --- | --- |
+
 | **OpenClaw Agent Session** | Schedule / 持续运行任务 | **时间状态** |
+
 | **ChatGPT Project** | Project Context / 长期讨论 | **认知状态** |
+
 | **Codex Project** | Development / 探索与构建 | **工程状态** |
+
 | **Lobster Workflow** | 固定流程的可靠执行 | **流程状态** |
 
 这里最重要的是，前三者不是三个不同版本的“AI Agent”，而是在处理三种完全不同的连续性。
